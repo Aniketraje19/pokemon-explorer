@@ -1,26 +1,64 @@
+import { useState, useMemo } from "react";
 import PokemonCard from "./PokemonCard";
-import SkeletonCard from "../../../ui/SkeletonCard";
+import Pagination from "./Pagination";
+import { usePokemonData } from "../hooks/usePokemonData";
+import SearchInput from "./SearchInput";
+import TypeFilter from "./TypeFilter";
+import Loader from "../../../ui/Loader"
+import SortFilter from "./SortFilter";
 
-export default function PokemonList({ pokemons, loading }) {
-  if (loading) {
+export default function PokemonList() {
+
+  
+  const {
+    pokemonList,    
+    loading,
+    error,
+    searchTerm,
+    selectedTypes,
+    setSearchTerm,
+    setSelectedTypes,
+    totalItems,
+    page,
+    setPage,
+    itemsPerPage,
+    setItemsPerPage
+  } = usePokemonData();
+
+   if (loading) return <Loader />;
+
+   if (error)
     return (
-      <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-8">
-        {Array.from({ length: 12 }).map((_, i) => (
-          <SkeletonCard key={i} />
-        ))}
+      <div className="h-screen flex items-center justify-center text-xl font-semibold text-red-500">
+        Failed to load data.
       </div>
     );
-  }
 
-  if (pokemons.length === 0) {
-    return <p className="text-center text-gray-500 mt-6">No Pokémon found.</p>;
-  }
+    const handleSelectedTypesChange = (selected) => {
+      setCurrentPage(1)
+      setSelectedTypes(selected);
+    }
+
+
 
   return (
-    <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-8">
-      {pokemons.map(p => (
-        <PokemonCard key={p.id} pokemon={p} />
-      ))}
+    <div>
+      <div className="mt-6 flex flex-col md:flex-row gap-4 items-center justify-center">
+        {/* Search and Type Filter */}
+        <SearchInput />
+        <TypeFilter  />
+        <SortFilter />
+      </div>
+
+      {/* Pokémon Cards */}
+      <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-8">
+        {pokemonList.map((pokemon) => (
+          <PokemonCard key={pokemon.id} pokemon={pokemon} />
+        ))}
+      </div>
+
+      {/* Pagination */}
+      <Pagination/>
     </div>
   );
 }
