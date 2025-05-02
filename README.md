@@ -1,12 +1,44 @@
-# React + Vite
+# 🧩 Pokémon Interactive Data Explorer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive React application built with **Vite** and **Tailwind CSS** that allows users to explore, search, and filter the first 150 Pokémon using data from the [PokeAPI](https://pokeapi.co/). Includes type-based filters, real-time search, and a Pokémon-themed UI.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🔗 Live Demo
 
-## Expanding the ESLint configuration
+🌐 https://pokemon-explorer-ebon-theta.vercel.app/ 
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🚀 Features
+
+- 🔍 Real-time Pokémon name search
+- 🌀 Filter by type (Fire, Water, Grass, etc.)
+- 📄 Display Pokémon cards with:
+  - Name
+  - Image (sprite)
+  - Type(s)
+  - ID
+- 🧠 Loading state with a running Pikachu animation
+- ❌ Empty state and error handling
+- 🎨 Styled with a Pokémon-themed color palette using Tailwind CSS
+- 📱 Fully responsive for mobile and desktop
+
+---
+
+## 🛠️ Tech Stack
+
+- **React (Vite)**
+- **Tailwind CSS**
+- **PokeAPI**
+- **JavaScript (ES6+)**
+
+---
+
+## 📦 Installation
+
+1. **Clone the repo**
+
+```bash
+git clone https://github.com/your-username/pokemon-explorer.git
+cd pokemon-explorer
